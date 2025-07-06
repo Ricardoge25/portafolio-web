@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ImSun } from 'react-icons/im';
 import { IoMdMoon } from "react-icons/io";
 
-const Header = () => {
+export default function Header() {
   const [darkMode, setDarkMode] = useState(false);
 
   const handleToggle = () => setDarkMode(!darkMode);
@@ -17,7 +17,7 @@ const Header = () => {
   }, [darkMode]);
 
   return (  
-    <div className="fixed top-0 left-0 w-full bg-shadow-1 dark:bg-shadow-9 pt-1 px-6">
+    <section className="fixed top-0 left-0 w-full bg-shadow-1 dark:bg-shadow-9 pt-1 px-6">
       {/* LOGO */}
       <div className="flex items-center">
         <div className="flex-shrink-0 ">
@@ -31,17 +31,17 @@ const Header = () => {
         <nav className="hidden md:flex flex-1 align-text-center justify-center">
           <ul className="flex space-x-8">
             <li>
-              <a href="/Sobre-Mí" className=" text-lg text-shadow-10 font-secondary px-12 hover:text-shadow-5 dark:text-shadow-2 dark:hover:text-shadow-1">
+              <a href="#Sobre-Mí" className=" text-lg font-secondary px-12 text-shadow-10 hover:text-shadow-7 dark:text-shadow-2 dark:hover:text-primary">
                 Sobre mí
               </a>
             </li>
             <li>
-              <a href="/Proyectos" className="text-lg text-shadow-10 font-secondary px-12 hover:text-shadow-5 dark:text-shadow-2 dark:hover:text-shadow-1">
+              <a href="#Proyectos" className="text-lg font-secondary px-12 text-shadow-10 hover:text-shadow-7 dark:text-shadow-2 dark:hover:text-primary">
                 Proyectos
               </a>
             </li>
             <li>
-              <a href="/Contacto" className="text-lg text-shadow-10 font-secondary px-12 hover:text-shadow-5 dark:text-shadow-2 dark:hover:text-shadow-1">
+              <a href="#Contacto" className="text-lg font-secondary px-12 text-shadow-10 hover:text-shadow-7 dark:text-shadow-2 dark:hover:text-primary">
                 Contacto
               </a>
             </li>
@@ -53,7 +53,8 @@ const Header = () => {
         <div className="ml-auto">
           <button
             onClick={handleToggle}
-            className="p-2 rounded-full bg-shadow-3 hover:bg-gray-300 dark:bg-shadow-8 dark:hover:bg-gray-600 transition-colors relative w-12 h-12 flex items-center justify-center"
+            className=
+            "p-2 rounded-full bg-shadow-3 hover:bg-gray-300 dark:bg-shadow-8 dark:hover:bg-gray-600 transition-colors relative w-12 h-12 flex items-center justify-center cursor-pointer"
             aria-label="Cambiar tema"
           >
             <span className="absolute transition-all duration-300"
@@ -61,20 +62,18 @@ const Header = () => {
                 opacity: darkMode ? 0 : 1,
                 transform: darkMode ? "scale(0.8) rotate(-30deg)" : "scale(1) rotate(0deg)"
               }}>
-              <ImSun className="text-2xl text-primary" />
+              <IoMdMoon className="text-2xl text-secondary" />
             </span>
             <span className="absolute transition-all duration-300"
               style={{
                 opacity: darkMode ? 1 : 0,
                 transform: darkMode ? "scale(1) rotate(0deg)" : "scale(0.8) rotate(30deg)"
               }}>
-              <IoMdMoon className="text-2xl text-secondary" />
+              <ImSun className="text-2xl text-primary" />
             </span>
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
-
-export default Header;

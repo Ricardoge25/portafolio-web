@@ -12,15 +12,16 @@
   --color-shadow-8: #404040;
   --color-shadow-9: #0D0D0D;
   --color-shadow-10: #000000;
-
+  
   --color-primary: #FF4D00;
   --color-secondary: #38193F;
-
+  --color-dark-blue: #062334;
+  --color-blue: #1D387D;
 
   --font-primary: 'Karma', sans-serif;
   --font-secondary: 'Lato', system-ui, sans-serif;
 }
 
 body {
-  @apply bg-shadow-9 text-white;
+  @apply bg-shadow-1 text-black dark:bg-shadow-9 dark:text-shadow-1;
 }
