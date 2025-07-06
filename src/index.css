@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme { 
+  --color-shadow-1: #F2F2F2;
+  --color-shadow-2: #D9D9D9;
+  --color-shadow-3: #BFBFBF;
+  --color-shadow-4: #A6A6A6;
+  --color-shadow-5: #8C8C8C;
+  --color-shadow-6: #737373;
+  --color-shadow-7: #595959; 
+  --color-shadow-8: #404040;
+  --color-shadow-9: #0D0D0D;
+  --color-shadow-10: #000000;
+
+  --color-primary: #FF4D00;
+  --color-secondary: #38193F;
+
+
+  --font-primary: 'Karma', sans-serif;
+  --font-secondary: 'Lato', system-ui, sans-serif;
+}
+
+body {
+  @apply bg-shadow-9 text-white;
+}
