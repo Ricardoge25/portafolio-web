@@ -4,16 +4,18 @@ import { FaLinkedinIn } from "react-icons/fa";
 
 export default function Hero() {
   return (
-    <section className="h-full text-white flex flex-col items-center justify-center px4 pt-10 dark:bg-shadow-9">
+    <section className="h-full text-white flex flex-col items-center justify-center px4 pt-10 pb-[280px]">
       <div
       className="w-full max-w-4xl rounded-2xl p-8 md:p-20 bg-[url(/hero.jpg)] shadow-lg relative overflow-hidden bg-cover bg-center"
       >
         <div className='text-center'>
-          <h2 className='text-3xl md:text-4xl font-bold font-primary'>Hola!</h2>
+          <h2 className='text-3xl md:text-4xl font-bold font-primary'>
+            Hola!
+          </h2>
           <h2 className='text-3xl md:text-4xl font-bold font-primary mt-2'>
             Me llamo Ricardo González.
           </h2>
-          <p className='text-base md:text-lg mt-2 font-secondary text-yellow-400'>
+          <p className='text-base md:text-lg mt-2 font-secondary'>
             Ingeniero Informático, apasionado por crear<br />
             soluciones tecnológicas innovadoras
           </p>
