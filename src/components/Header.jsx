@@ -17,13 +17,13 @@ export default function Header() {
   }, [darkMode]);
 
   return (  
-    <section className="fixed top-0 left-0 w-full bg-shadow-1 dark:bg-shadow-9 pt-1 px-6">
+    <section className="fixed top-0 left-0 w-full bg-shadow-1 dark:bg-shadow-9 pt-1 px-6 z-50">
       {/* LOGO */}
       <div className="flex items-center">
-        <div className="flex-shrink-0 ">
+        <div className="flex-shrink-0">
           <div className="flex flex-col">
             <h1 className="text-3xl font-primary font-bold text-shadow-9 dark:text-shadow-1 tracking-tight">RAGE</h1>
-            <p className="text-xl text-primary font-secondary font-light -mt-1"><i>Software developer</i></p>
+            <p className="text-xl text-primary font-secondary italic font-light -mt-1">Software developer</p>
           </div>
         </div>
 
@@ -47,8 +47,6 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-
-        {/* THEME BUTTON */}
         {/* THEME SWITCH BUTTON */}
         <div className="ml-auto">
           <button
