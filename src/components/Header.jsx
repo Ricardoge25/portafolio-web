@@ -47,8 +47,6 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-
-        {/* THEME BUTTON */}
         {/* THEME SWITCH BUTTON */}
         <div className="ml-auto">
           <button

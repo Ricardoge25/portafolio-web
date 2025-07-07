@@ -8,7 +8,7 @@ const Tag = (props) => {
 
 function About() {
   return (
-    <section id="Sobre-Mí" className="py-20 px-6">
+    <section id="Sobre-Mí" className="pt-20 px-6 pb-[280px]">
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-8">
         <h2 className="text-4xl font-primary font-semibold text-shadow-10 dark:text-shadow-1">
           SOBRE MÍ
