@@ -18,10 +18,10 @@ export default function Projects() {
           technologies={["React", "Node.js", "MongoDB"]}
         />
         <ProjectCard 
-          image="/PlantillaPortafolioDjango.png"
+          image="/PlantillaPortafolioDjango.webp"
           title="Plantilla Portafolio"
           description="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          technologies={["HTML", "CSS", "JavaScript"]}
+          technologies={["Python, Django", "HTML", "Bootrap"]}
         />
         <ProjectCard 
           image="/SpaceInvasors.png"

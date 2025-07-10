@@ -11,7 +11,7 @@ export function ProjectCard({
         <img 
           src={image}
           alt={title}
-          className="h-full w-full object-cover "
+          className="h-full w-full object-cover"
         />
       </div>
       {/* CONTENIDO DEL PROYECTO */}

@@ -18,7 +18,7 @@ function About() {
           <div className="max-w-xl text-center">
             {/* AVATAR */}
             <img
-              src="/AvatarRG.jpg"
+              src="/AvatarRG.webp"
               alt="Avatar"
               className="w-50 h-50 rounded-full object-cover shadow-md mx-auto mb-4 "
             />
