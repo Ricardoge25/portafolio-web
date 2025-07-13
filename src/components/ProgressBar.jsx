@@ -13,7 +13,7 @@ export default function ProgressBar({ label, percentage, Icon }) {
       {/* Barra de progreso */}
       <div className="w-full bg-gray-300 h-3 rounded-full">
         <div
-          className="h-3 rounded-full bg-secondary "
+          className="h-3 rounded-full bg-purple-800"
           style={{ width: `${percentage}%` }}
         />
       </div>

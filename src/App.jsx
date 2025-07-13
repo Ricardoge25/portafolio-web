@@ -4,6 +4,8 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -11,14 +13,16 @@ function App() {
       <header>
         <Header />
       </header>
+      
       <main className="pt-16">
         <Hero />
         <About />
         <Projects />
         <Skills />
-        {/* Aquí puedes agregar más secciones como Contacto, etc. */}
+        <Contact />
       </main>
       
+      <Footer />
     </>
   )
 }

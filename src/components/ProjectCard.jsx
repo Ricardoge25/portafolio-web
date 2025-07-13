@@ -17,7 +17,7 @@ export function ProjectCard({
       {/* CONTENIDO DEL PROYECTO */}
       <div className="h-65 w-full bg-shadow-2 text-shadow-10 py-4 px-2">
         <h3 className="text-4xl font-normal mb-2 font-primary">{title}</h3>
-        <p className="mb-4 font-secondary font-light">{description}</p>
+        <p className="mb-4 font-secondary font-normal">{description}</p>
         {/* TECNOLOGÍAS */}
         <div className="flex flex-wrap gap-3">
           {technologies.map((tech, index) => (

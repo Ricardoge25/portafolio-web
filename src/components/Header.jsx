@@ -41,6 +41,11 @@ export default function Header() {
               </a>
             </li>
             <li>
+              <a href="#Habilidades" className="text-lg font-secondary px-12 text-shadow-10 hover:text-shadow-7 dark:text-shadow-2 dark:hover:text-primary">
+                Habilidades
+              </a>
+            </li>
+            <li>
               <a href="#Contacto" className="text-lg font-secondary px-12 text-shadow-10 hover:text-shadow-7 dark:text-shadow-2 dark:hover:text-primary">
                 Contacto
               </a>
@@ -60,7 +65,7 @@ export default function Header() {
                 opacity: darkMode ? 0 : 1,
                 transform: darkMode ? "scale(0.8) rotate(-30deg)" : "scale(1) rotate(0deg)"
               }}>
-              <IoMdMoon className="text-2xl text-secondary" />
+              <IoMdMoon className="text-2xl text-purple-800" />
             </span>
             <span className="absolute transition-all duration-300"
               style={{

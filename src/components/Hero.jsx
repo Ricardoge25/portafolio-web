@@ -30,17 +30,16 @@ export default function Hero() {
             <div>
               <a 
                 href="#Proyectos" 
-                className='bg-gradient-to-r from-dark-blue to-violet text-white px-5 py-2 rounded-full text-sm font-semibold'
+                className='bg-gradient-to-r from-dark-blue to-violet text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-80 transition duration-300'
               >
                 Ver Proyectos
                 <MdOutlineCode className="inline-block pl-2 text-3xl pb-0.5 text-white" />
               </a>
-              
           </div>
           <div>
             <a 
               href="#Contacto" 
-              className='bg-gradient-to-r from-naraja to-rojo text-white px-5 py-2 rounded-full text-sm font-semibold'
+              className='bg-gradient-to-r from-naraja to-rojo text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-80 transition duration-300'
             >
               Contáctame
               <AiOutlineMessage className="inline-block pl-2 text-2xl pb-0.5 text-white" />
