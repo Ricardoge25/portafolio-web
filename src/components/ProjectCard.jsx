@@ -5,25 +5,29 @@ export function ProjectCard({
   technologies = ["Tecnología", "Tecnología", "Tecnología"]
 }) {
   return (
-    <div className="rounded-lg overflow-hidden border-4 border-shadow-3 max-w-sm mx-auto">
+    <div className="rounded-xl overflow-hidden border-4 border-shadow-3 shadow-md bg-white dark:bg-shadow-9 dark:text-shadow-2 trnasition-all duration-300 max-w-md mx-auto">
       {/* IMAGEN DEL PROYECTO */}
-      <div className="h-65 w-full  overflow-hidden">
+      <div className="aspect-video overflow-hidden">
         <img 
           src={image}
           alt={title}
           className="h-full w-full object-cover"
         />
       </div>
+
       {/* CONTENIDO DEL PROYECTO */}
-      <div className="h-65 w-full bg-shadow-2 text-shadow-10 py-4 px-2">
-        <h3 className="text-4xl font-normal mb-2 font-primary">{title}</h3>
-        <p className="mb-4 font-secondary font-normal">{description}</p>
+      <div className="p-6 text-shadow-10">
+        <h3 className="text-2xl md:text-3xl font-semibold mb-2 font-primary dark:text-shadow-2">{title}</h3>
+        <p className="text-sm md:text-base mb-4 font-secondary font-normal dark:text-shadow-2">
+          {description}
+        </p>
+
         {/* TECNOLOGÍAS */}
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2">
           {technologies.map((tech, index) => (
             <span
               key={index}
-              className="border border-shadow-10 rounded-full px-3 py-1 text-sm"
+              className="border border-shadow-10 dark:border-shadow-4 text-sm px-3 py-1 rounded-full bg-shadow-2 dark:text-shadow-10 text-shadow-10 font-secondary"
             >
               {tech}
             </span>

@@ -10,10 +10,7 @@ import Footer from './components/Footer'
 function App() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
-      
+      <Header />
       <main className="pt-16">
         <Hero />
         <About />
@@ -21,7 +18,6 @@ function App() {
         <Skills />
         <Contact />
       </main>
-      
       <Footer />
     </>
   )
