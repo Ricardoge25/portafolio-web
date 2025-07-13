@@ -10,7 +10,7 @@ import { FaNodeJs } from "react-icons/fa";
 
 export default function Skills() {
   return (
-    <section className="py-20 px-4 pb-[280px]">
+    <section id="Habilidades" className="py-20 px-4 pb-[280px]">
       <h2 className="text-4xl font-primary font-semibold text-shadow-10 dark:text-shadow-1 text-center mb-2">
         HABILIDADES TÉCNICAS
       </h2>

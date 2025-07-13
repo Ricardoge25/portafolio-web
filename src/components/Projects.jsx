@@ -14,26 +14,32 @@ export default function Projects() {
         <ProjectCard 
           image="/IntraNote.png"
           title="Intranote"
-          description="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          technologies={["React", "Node.js", "MongoDB"]}
+          description="Sistema de gestión de notas e incidencias para empresas y mesas de soporte, desarrollado con Django."
+          technologies={["Python", "Django", "HTML", "Bootrap", "JavaScript", "PostgreSQL"]}
         />
         <ProjectCard 
           image="/PlantillaPortafolioDjango.webp"
           title="Plantilla Portafolio"
-          description="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          technologies={["Python, Django", "HTML", "Bootrap"]}
+          description="Plantilla de portafolio completa para mostrar proyectos e información sobre ti, desarrollada con Django y Bootstrap."
+          technologies={["Python", "Django", "HTML", "Bootrap"]}
         />
         <ProjectCard 
           image="/SpaceInvasors.png"
           title="SpaceInvasors"
-          description="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          technologies={["Python", "Django"]}
+          description="Clon del mítico juego Space Invaders, desarrollado con Python y la librería Pygame."
+          technologies={["Python", "Pygame"]}
         />
         <ProjectCard 
           image="/GestorRestaurante.png"
           title="Facturación Restaurante"
-          description="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          technologies={["HTML", "CSS", "JavaScript"]}
+          description="Sistema de gestión de facturación para restaurantes que imprime tickets y facturas, desarrollado con Python y Tkinter."
+          technologies={["Python", "Tkinter"]}
+        />
+        <ProjectCard 
+          image="/HaluaStudio.webp"
+          title="Landing Page Halua Studio"
+          description="Landing page para Halua Studio, un estudio de diseño y desarrollo web, creada con React y Tailwind CSS."
+          technologies={["React", "Tailwind CSS", "JavaScript", "Vite.js"]}
         />
       </div>
     </section>
