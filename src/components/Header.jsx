@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import { ImSun } from 'react-icons/im';
 import { IoMdMoon } from "react-icons/io";
+import { FiMenu, FiX } from "react-icons/fi";
+import { div } from "framer-motion/client";
+
 
 export default function Header() {
   const [darkMode, setDarkMode] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleToggle = () => setDarkMode(!darkMode);
+  const handleMenuToggle = () => setMenuOpen(!menuOpen);
 
   // Agrega o quita la clase 'dark' al body
   useEffect(() => {
@@ -17,47 +22,42 @@ export default function Header() {
   }, [darkMode]);
 
   return (  
-    <section className="fixed top-0 left-0 w-full bg-shadow-1 dark:bg-shadow-9 pt-1 px-6 z-50">
-      {/* LOGO */}
-      <div className="flex items-center">
-        <div className="flex-shrink-0">
-          <div className="flex flex-col">
-            <h1 className="text-3xl font-primary font-bold text-shadow-9 dark:text-shadow-1 tracking-tight">RAGE</h1>
-            <p className="text-xl text-primary font-secondary italic font-light -mt-1">Software developer</p>
-          </div>
+    <header className="fixed top-0 left-0 w-full bg-shadow-1 dark:bg-shadow-9 pt-1 px-6 z-50 shadow-md">
+      <div className="flex items-center justify-between">
+        {/* LOGO */}
+        <div className="flex flex-col">
+          <h1 className="text-2xl font-primary font-bold text-shadow-9 dark:text-shadow-1 tracking-tight">RAGE</h1>
+          <p className="text-sm text-primary font-secondary italic font-normal -mt-1">Software developer</p>
+        </div>
+
+        {/* MENU HAMBURGUESA */}
+        <div className="md:hidden"> 
+          <button 
+            onClick={handleMenuToggle}
+            className="text-2xl text-primary dark:text-shadow-1 focus:outline-none"
+          >
+            {menuOpen ? <FiX /> : <FiMenu />}
+          </button>
         </div>
 
         {/* NAVIGATION */}
-        <nav className="hidden md:flex flex-1 align-text-center justify-center">
-          <ul className="flex space-x-8">
-            <li>
-              <a href="#Sobre-Mí" className=" text-lg font-secondary px-12 text-shadow-10 hover:text-shadow-7 dark:text-shadow-2 dark:hover:text-primary">
-                Sobre mí
-              </a>
-            </li>
-            <li>
-              <a href="#Proyectos" className="text-lg font-secondary px-12 text-shadow-10 hover:text-shadow-7 dark:text-shadow-2 dark:hover:text-primary">
-                Proyectos
-              </a>
-            </li>
-            <li>
-              <a href="#Habilidades" className="text-lg font-secondary px-12 text-shadow-10 hover:text-shadow-7 dark:text-shadow-2 dark:hover:text-primary">
-                Habilidades
-              </a>
-            </li>
-            <li>
-              <a href="#Contacto" className="text-lg font-secondary px-12 text-shadow-10 hover:text-shadow-7 dark:text-shadow-2 dark:hover:text-primary">
-                Contacto
-              </a>
-            </li>
-          </ul>
+        <nav className="hidden md:flex flex-1 align-text-center justify-center space-x-18">
+          {["Sobre-Mí", "Proyectos", "Habilidades", "Contacto"].map((item) => (
+            <a
+              key={item}
+              href={`#${item}`}
+              className="text-sm font-secondary font-black px-2 text-shadow-10 hover:text-primary dark:text-shadow-2 dark:hover:text-primary"
+            >
+              {item.replace("-", " ")}
+            </a>
+          ))}
         </nav>
-        {/* THEME SWITCH BUTTON */}
-        <div className="ml-auto">
+
+        {/* BOTÓN DEL TEMA */}
+        <div className="ml-4">
           <button
             onClick={handleToggle}
-            className=
-            "p-2 rounded-full bg-shadow-3 hover:bg-gray-300 dark:bg-shadow-8 dark:hover:bg-gray-600 transition-colors relative w-12 h-12 flex items-center justify-center cursor-pointer"
+            className="p-2 rounded-full bg-shadow-3 hover:bg-gray-300 dark:bg-shadow-8 dark:hover:bg-gray-600 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer"
             aria-label="Cambiar tema"
           >
             <span className="absolute transition-all duration-300"
@@ -65,18 +65,34 @@ export default function Header() {
                 opacity: darkMode ? 0 : 1,
                 transform: darkMode ? "scale(0.8) rotate(-30deg)" : "scale(1) rotate(0deg)"
               }}>
-              <IoMdMoon className="text-2xl text-purple-800" />
+              <IoMdMoon className="text-lg text-purple-800" />
             </span>
             <span className="absolute transition-all duration-300"
               style={{
                 opacity: darkMode ? 1 : 0,
                 transform: darkMode ? "scale(1) rotate(0deg)" : "scale(0.8) rotate(30deg)"
               }}>
-              <ImSun className="text-2xl text-primary" />
+              <ImSun className="text-lg text-primary" />
             </span>
           </button>
         </div>
       </div>
-    </section>
+
+      {/* MENÚ MÓVIL */}
+      {menuOpen && (
+        <div className="md:hidden mt-4 flex flex-col gap-4 items-start">
+          {["Sobre-Mí", "Proyectos", "Habilidades", "Contacto"].map((item) => (
+            <a
+              key={item}
+              href={`#${item}`}
+              className="block text-sm font-secondary text-shadow-10 dark:text-shadow-2 "
+              onClick={() => setMenuOpen(false)} // Cierra el menú al hacer clic
+            >
+              {item.replace("-", " ")}
+            </a>
+          ))}
+        </div>
+      )}
+    </header>
   );
 };
