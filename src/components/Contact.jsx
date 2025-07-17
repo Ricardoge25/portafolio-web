@@ -1,6 +1,29 @@
+import { motion } from "framer-motion";
+
 export default function Contact() {
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
-    <section id="Contacto" className="pt-20 pb-32 px-4">
+    <motion.section
+      id="Contacto"
+      className="pt-20 pb-32 px-4"
+      initial={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="max-w-3xl mx-auto">
         {/* TÍTULO */}
         <div className="text-center mb-8">
@@ -13,18 +36,22 @@ export default function Contact() {
         </div>
 
         {/* FORMULARIO */}
-        <form
+        <motion.form
           name="contact-form"
           method="POST"
           data-netlify="true"
-          className="bg-white dark:bg-shadow-9 py-10 px-15 rounded-2xl shadow-[0_0_50px_10px_rgba(77,0,99,99)] dark:shadow-[0_0_50px_10px_rgba(77,0,99,99)] space-y-6 "
+          className="bg-white dark:bg-shadow-9 py-10 px-15 rounded-2xl shadow-[0_0_50px_10px_rgba(77,0,99,99)] dark:shadow-[0_0_50px_10px_rgba(77,0,99,99)] space-y-6"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
         >
           {/* CAMPO OCULTO NETLIFY */}
           <input type="hidden" name="form-name" value="contact-form" />
 
           {/* Nombre y Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
+            <motion.div variants={itemVariants}>
               <label className="block mb-1 font-secondary text-sm dark:text-shadow-2">
                 Nombre
               </label>
@@ -35,8 +62,9 @@ export default function Contact() {
                 className="w-full border-2 rounded px-3 py-2 text-sm border-shadow-3 dark:border-shadow-5 dark:text-shadow-4 font-secondary"
                 required
               />
-            </div>
-            <div>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
               <label className="block mb-1 font-secondary text-sm dark:text-shadow-2">
                 Email
               </label>
@@ -47,11 +75,11 @@ export default function Contact() {
                 className="w-full border-2 rounded px-3 py-2 text-sm border-shadow-3 font-secondary dark:text-shadow-4 dark:border-shadow-5"
                 required
               />
-            </div>
+            </motion.div>
           </div>
 
           {/* Asunto */}
-          <div>
+          <motion.div variants={itemVariants}>
             <label className="block mb-1 font-secondary text-sm dark:text-shadow-2">
               Asunto
             </label>
@@ -62,10 +90,10 @@ export default function Contact() {
               className="w-full border-2 rounded px-3 py-2 text-sm border-shadow-3 font-secondary dark:text-shadow-4 dark:border-shadow-5"
               required
             />
-          </div>
+          </motion.div>
 
           {/* Mensaje */}
-          <div>
+          <motion.div variants={itemVariants}>
             <label className="block mb-1 font-secondary text-sm dark:text-shadow-2">
               Mensaje
             </label>
@@ -75,19 +103,19 @@ export default function Contact() {
               className="w-full border-2 rounded px-3 py-2 text-sm h-32 border-shadow-3 font-secondary dark:text-shadow-4 dark:border-shadow-5"
               required
             ></textarea>
-          </div>
+          </motion.div>
 
           {/* Botón */}
-          <div className="text-center">
+          <motion.div className="text-center" variants={itemVariants}>
             <button
               type="submit"
-              className="w-full  bg-gradient-to-r from-dark-blue to-violet text-white px-6 py-2 rounded-lg text-base font-semibold hover:opacity-50 transition duration-300"
+              className="w-full bg-gradient-to-r from-dark-blue to-violet text-white px-6 py-2 rounded-lg text-base font-semibold hover:opacity-50 transition duration-300"
             >
               Enviar Mensaje
             </button>
-          </div>
-        </form>
+          </motion.div>
+        </motion.form>
       </div>
-    </section>
-  )
+    </motion.section>
+  );
 }
