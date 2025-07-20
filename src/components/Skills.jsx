@@ -1,8 +1,29 @@
 import ProgressBar from "./ProgressBar";
-import { FaCode } from "react-icons/fa6";
 import { SiDjango } from "react-icons/si";
-import { FaCodeBranch, FaReact, FaJava, FaAngular, FaNodeJs } from "react-icons/fa";
+import { FaCodeBranch, FaReact, FaJava, FaAngular, FaNodeJs, FaCode } from "react-icons/fa";
 import { FiDatabase } from "react-icons/fi";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2, // animación en cascada
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function Skills() {
   return (
@@ -15,49 +36,29 @@ export default function Skills() {
           Tecnología y herramientas que manejo en mis proyectos
         </p>
 
-        {/* GRID SKILLS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 place-items-center">
-          <ProgressBar
-            label="Python"
-            percentage={75}
-            Icon={FaCode}
-          />
-          <ProgressBar
-            label="Django"
-            percentage={70}
-            Icon={SiDjango}
-          />
-          <ProgressBar
-            label="Git"
-            percentage={70}
-            Icon={FaCodeBranch}
-          />
-          <ProgressBar
-            label="React"
-            percentage={50}
-            Icon={FaReact}
-          />
-          <ProgressBar
-            label="Java"
-            percentage={55}
-            Icon={FaJava}
-          />
-          <ProgressBar
-            label="Bases de Datos"
-            percentage={60}
-            Icon={FiDatabase}
-          />
-          <ProgressBar
-            label="Angular"
-            percentage={25}
-            Icon={FaAngular}
-          />
-          <ProgressBar
-            label="Node.js"
-            percentage={15}
-            Icon={FaNodeJs}
-          />
-        </div>
+        {/* GRID SKILLS animado */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-10 place-items-center"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {[
+            { label: "Python", percent: 75, Icon: FaCode },
+            { label: "Django", percent: 70, Icon: SiDjango },
+            { label: "Git", percent: 70, Icon: FaCodeBranch },
+            { label: "React", percent: 50, Icon: FaReact },
+            { label: "Java", percent: 55, Icon: FaJava },
+            { label: "Bases de Datos", percent: 60, Icon: FiDatabase },
+            { label: "Angular", percent: 25, Icon: FaAngular },
+            { label: "Node.js", percent: 15, Icon: FaNodeJs },
+          ].map(({ label, percent, Icon }, index) => (
+            <motion.div key={index} variants={itemVariants} className="w-full">
+              <ProgressBar label={label} percentage={percent} Icon={Icon} />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

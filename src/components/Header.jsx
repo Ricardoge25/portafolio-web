@@ -22,7 +22,7 @@ export default function Header() {
   }, [darkMode]);
 
   return (  
-    <header className="fixed top-0 left-0 w-full bg-shadow-1 dark:bg-shadow-9 pt-1 px-6 z-50 shadow-md">
+    <header className="fixed top-0 left-0 w-full bg-shadow-1 dark:bg-shadow-9 pt-1 px-6 z-50 shadow-md ">
       <div className="flex items-center justify-between">
         {/* LOGO */}
         <div className="flex flex-col">
@@ -57,7 +57,7 @@ export default function Header() {
         <div className="ml-4">
           <button
             onClick={handleToggle}
-            className="p-2 rounded-full bg-shadow-3 hover:bg-gray-300 dark:bg-shadow-8 dark:hover:bg-gray-600 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer"
+            className="relative p-2 rounded-full bg-shadow-3 hover:bg-gray-300 dark:bg-shadow-8 dark:hover:bg-gray-600 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer"
             aria-label="Cambiar tema"
           >
             <span className="absolute transition-all duration-300"
