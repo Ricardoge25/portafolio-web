@@ -37,7 +37,7 @@ export default function Contact() {
 
         {/* FORMULARIO */}
         <motion.form
-          name="contacto"
+          name="contact"
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
@@ -49,7 +49,7 @@ export default function Contact() {
           variants={containerVariants}
         >
           {/* CAMPO OCULTO NETLIFY */}
-          <input type="hidden" name="form-name" value="contacto" />
+          <input type="hidden" name="form-name" value="contact" />
 
           {/* Nombre y Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
