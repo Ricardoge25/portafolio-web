@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ImSun } from "react-icons/im";
 import { IoMdMoon } from "react-icons/io";
 import { FiMenu, FiX } from "react-icons/fi";
-import { div } from "framer-motion/client";
+import { Link } from "react-scroll";
 
 export default function Header() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -31,6 +31,8 @@ export default function Header() {
     }
   }, [darkMode]);
 
+  const menuItems = ["Sobre-Mí", "Proyectos", "Habilidades", "Contacto"];
+
   return (
     <header className="fixed top-0 left-0 w-full bg-shadow-1 dark:bg-shadow-9 pt-1 px-6 z-50 shadow-md ">
       <div className="flex items-center justify-between">
@@ -56,14 +58,16 @@ export default function Header() {
 
         {/* NAVIGATION */}
         <nav className="hidden md:flex flex-1 align-text-center justify-center space-x-18">
-          {["Sobre-Mí", "Proyectos", "Habilidades", "Contacto"].map((item) => (
-            <a
+          {menuItems.map((item) => (
+            <Link
               key={item}
-              href={`#${item}`}
-              className="text-sm font-secondary font-black px-2 text-shadow-10 hover:text-primary dark:text-shadow-2 dark:hover:text-primary"
+              to={item}
+              smooth={true}
+              duration={600}
+              className="text-sm font-secondary font-black px-2 text-shadow-10 hover:text-primary dark:text-shadow-2 dark:hover:text-primary cursor-pointer"
             >
               {item.replace("-", " ")}
-            </a>
+            </Link>
           ))}
         </nav>
 

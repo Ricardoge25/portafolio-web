@@ -3,10 +3,11 @@ import { FiGithub, FiMail } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import { MdOutlineCode } from "react-icons/md";
 import { AiOutlineMessage } from "react-icons/ai";
+import { Link } from "react-scroll";
 
 export default function Hero() {
   return (
-    <section className="text-white flex flex-col items-center justify-center px-4 pt-[60px] pb-[200px] sm:pb-[250px] md:pb-[280px] overflow-hidden">
+    <section className="text-white flex flex-col items-center justify-center px-4 pt-[50px] pb-[200px] sm:pb-[250px] md:pb-[280px] overflow-hidden">
       {/* CONTENEDOR PRINCIPAL */}
       <div
         className="w-full max-w-4xl 
@@ -18,16 +19,16 @@ export default function Hero() {
           {/* TÍTULOS */}
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl font-bold font-primary"
-            initial={{ scale:0 }}
-            animate={{ scale:1 }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
             transition={{ delay: 0.6 }}
           >
-            Hola!
+            Hola Mundo!
           </motion.h2>
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl font-bold font-primary mt-2"
-            initial={{ scale:0 }}
-            animate={{ scale:1 }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
             transition={{ delay: 1 }}
           >
             Me llamo Ricardo González.
@@ -36,8 +37,8 @@ export default function Hero() {
           {/* DESCRIPCIÓN */}
           <motion.p
             className="text-sm sm:text-base md:text-lg mt-2 font-secondary"
-            initial={{ scale:0 }}
-            animate={{ scale:1 }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
             transition={{ delay: 1.4 }}
           >
             Ingeniero Informático, apasionado por crear
@@ -48,41 +49,59 @@ export default function Hero() {
           {/* BOTONES */}
           <motion.div
             className="mt-6 flex flex-wrap justify-center gap-4"
-            initial={{ scale:0 }}
-            animate={{ scale:1 }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
             transition={{ delay: 1.8 }}
           >
-            <a
-              href="#Proyectos"
-              className="bg-gradient-to-r from-dark-blue to-violet text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-80 transition duration-300 flex items-center gap-2"
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 1.8 }}
             >
-              Ver Proyectos
-              <MdOutlineCode className="text-xl" />
-            </a>
-            <a
-              href="#Contacto"
-              className="bg-gradient-to-r from-naraja to-rojo text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-80 transition duration-300 flex items-center gap-2"
+              <Link
+                to="Proyectos"
+                smooth={true}
+                duration={600}
+                spy={true}
+                className="cursor-pointer bg-gradient-to-r from-dark-blue to-violet text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-80 transition duration-300 flex items-center gap-2"
+              >
+                Ver Proyectos
+                <MdOutlineCode className="text-xl" />
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 1.8 }}
             >
-              Contáctame
-              <AiOutlineMessage className="text-lg" />
-            </a>
+              <Link
+                to="Contacto"
+                smooth={true}
+                duration={600}
+                spy={true}
+                className="cursor-pointer bg-gradient-to-r from-naraja to-rojo text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-80 transition duration-300 flex items-center gap-2"
+              >
+                Contáctame
+                <AiOutlineMessage className="text-lg" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>
 
       {/* REDES SOCIALES */}
-      <motion.div 
+      <motion.div
         className="flex gap-8 sm:gap-14 md:gap-20 mt-10 text-shadow-7 dark:text-shadow-3 text-2xl sm:text-3xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.8, duration: 0.8 }}
       >
-        <motion.a 
-        href="mailto:gonzalezricardo161@gmail.com" 
-        aria-label="Email" 
-        whileHover={{ scale: 1.2 }}
+        <motion.a
+          href="mailto:gonzalezricardo161@gmail.com"
+          aria-label="Email"
+          whileHover={{ scale: 1.2 }}
         >
-          <FiMail className="hover:text-primary transition"/>
+          <FiMail className="hover:text-primary transition" />
         </motion.a>
         <motion.a
           href="https://github.com/Ricardoge25"
@@ -90,7 +109,7 @@ export default function Hero() {
           target="_blank"
           whileHover={{ scale: 1.2 }}
         >
-          <FiGithub className="hover:text-primary transition"/>
+          <FiGithub className="hover:text-primary transition" />
         </motion.a>
         <motion.a
           href="https://www.linkedin.com/in/ricardo-gonzalez-1538b6252/"
@@ -98,7 +117,7 @@ export default function Hero() {
           target="_blank"
           whileHover={{ scale: 1.2 }}
         >
-          <FaLinkedinIn className="hover:text-primary transition"/>
+          <FaLinkedinIn className="hover:text-primary transition" />
         </motion.a>
       </motion.div>
     </section>

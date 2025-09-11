@@ -3,18 +3,20 @@ import { useEffect, useRef, useState } from "react";
 
 export default function ProgressBar({ label, percentage, Icon }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.3 });
   const controls = useAnimation();
   const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
     if (isInView) {
+      setHasAnimated(true); // Marcar que ha sido vista
       controls.start({ width: `${percentage}%` });
 
-      // Contador animado
+      // Reinicia contador animado
       let start = 0;
-      const duration = 1500; // milisegundos
-      const increment = percentage / (duration / 10); // cuánto sumar cada 10ms
+      const duration = 1500;
+      const increment = percentage / (duration / 10);
 
       const interval = setInterval(() => {
         start += increment;
@@ -24,8 +26,15 @@ export default function ProgressBar({ label, percentage, Icon }) {
         }
         setCount(Math.floor(start));
       }, 10);
+
+      return () => clearInterval(interval);
+    } else if (hasAnimated) {
+      // Si ya fue animada y salió del viewport, reiniciamos
+      controls.set({ width: 0 });
+      setCount(0);
+      setHasAnimated(false);
     }
-  }, [isInView, controls, percentage]);
+  }, [isInView, controls, percentage, hasAnimated]);
 
   return (
     <div ref={ref} className="w-full max-w-md">
@@ -43,6 +52,7 @@ export default function ProgressBar({ label, percentage, Icon }) {
           initial={{ width: 0 }}
           animate={controls}
           transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{ once: false }}
         />
       </div>
     </div>

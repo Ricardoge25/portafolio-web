@@ -52,7 +52,7 @@ function About() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
           >
             <img
               src="/AvatarRG.webp"
@@ -67,7 +67,7 @@ function About() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
           >
             <p className="sm:text-lg md:text-xl leading-relaxed tracking-wide font-primary dark:text-shadow-4 text-justify">
               Soy un estudiante de Ingeniería Informática con una gran pasión por
@@ -85,7 +85,7 @@ function About() {
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: false }}
             >
               {[
                 "Desarrollo Web", "Bases de Datos", "Algoritmos", "Backend",

@@ -18,7 +18,7 @@ const cardVariants = {
 
 export default function Projects() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once:true, margin:"0px 0px -100px 0px"});
+  const isInView = useInView(ref, { once:false, margin:"0px 0px -100px 0px"});
 
 
   return (
@@ -64,7 +64,6 @@ export default function Projects() {
             technologies={["Python", "Django", "HTML", "Bootrap"]}
             />
           </motion.div>
-
           <motion.div 
           variants={cardVariants}
           whileHover={{ scale: 1.03}}
@@ -90,7 +89,6 @@ export default function Projects() {
             technologies={["Python", "Tkinter"]}
             />
           </motion.div>
-          
           <motion.div 
           variants={cardVariants}
           whileHover={{ scale: 1.03}}
