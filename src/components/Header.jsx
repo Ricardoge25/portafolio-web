@@ -4,6 +4,8 @@ import { IoMdMoon } from "react-icons/io";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-scroll";
 
+const menuItems = ["Sobre-Mí", "Proyectos", "Habilidades", "Contacto"];
+
 export default function Header() {
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -31,8 +33,6 @@ export default function Header() {
     }
   }, [darkMode]);
 
-  const menuItems = ["Sobre-Mí", "Proyectos", "Habilidades", "Contacto"];
-
   return (
     <header className="fixed top-0 left-0 w-full bg-shadow-1 dark:bg-shadow-9 pt-1 px-6 z-50 shadow-md ">
       <div className="flex items-center justify-between">
@@ -50,6 +50,8 @@ export default function Header() {
         <div className="md:hidden">
           <button
             onClick={handleMenuToggle}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={menuOpen}
             className="text-2xl text-primary dark:text-shadow-1 focus:outline-none"
           >
             {menuOpen ? <FiX /> : <FiMenu />}
@@ -107,15 +109,17 @@ export default function Header() {
       {/* MENÚ MÓVIL */}
       {menuOpen && (
         <div className="md:hidden mt-4 flex flex-col gap-4 items-start">
-          {["Sobre-Mí", "Proyectos", "Habilidades", "Contacto"].map((item) => (
-            <a
+          {menuItems.map((item) => (
+            <Link
               key={item}
-              href={`#${item}`}
-              className="block text-sm font-secondary text-shadow-10 dark:text-shadow-2 "
+              to={item}
+              smooth={true}
+              duration={600}
+              className="block text-sm font-secondary text-shadow-10 dark:text-shadow-2 cursor-pointer"
               onClick={() => setMenuOpen(false)} // Cierra el menú al hacer clic
             >
               {item.replace("-", " ")}
-            </a>
+            </Link>
           ))}
         </div>
       )}

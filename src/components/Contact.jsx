@@ -51,6 +51,13 @@ export default function Contact() {
           {/* CAMPO OCULTO NETLIFY */}
           <input type="hidden" name="form-name" value="contact" />
 
+          {/* HONEYPOT ANTISPAM: invisible para personas, los bots lo rellenan */}
+          <p hidden>
+            <label>
+              No rellenar: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+            </label>
+          </p>
+
           {/* Nombre y Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <motion.div variants={itemVariants}>

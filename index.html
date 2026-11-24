@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Karma:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <link href="/src/styles.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portafolio</title>
+    <title>Ricardo González | Desarrollador de Software</title>
+    <meta
+      name="description"
+      content="Portafolio de Ricardo González, Ingeniero Informático y desarrollador de software. Proyectos con Python, Django, React y bases de datos."
+    />
+    <meta name="author" content="Ricardo González" />
+    <meta name="theme-color" content="#38193F" />
+
+    <!-- Open Graph (vista previa al compartir en LinkedIn, WhatsApp, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="Ricardo González | Desarrollador de Software" />
+    <meta
+      property="og:description"
+      content="Ingeniero Informático apasionado por crear soluciones tecnológicas. Mira mis proyectos y contáctame."
+    />
   </head>
 
   <body>
     <!-- Formulario oculto para que Netlify detecte el formulario generado por React -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="text" name="subject" />

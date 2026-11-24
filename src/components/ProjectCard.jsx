@@ -8,8 +8,8 @@ export function ProjectCard({
     <div 
       className="h-full flex flex-col rounded-xl overflow-hidden border-4 
       border-shadow-3 shadow-md bg-white dark:bg-shadow-9 
-      dark:text-shadow-2 trnasition-all duration-300 max-w-md 
-      mx-auto transition-transform hover:shadow-xl dark:hover:shadow-purple-800">
+      dark:text-shadow-2 transition-all duration-300 max-w-md
+      mx-auto hover:shadow-xl dark:hover:shadow-purple-800">
       {/* IMAGEN DEL PROYECTO */}
       <div className="aspect-video overflow-hidden">
         <img 
