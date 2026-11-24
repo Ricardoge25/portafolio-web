@@ -26,6 +26,23 @@
       property="og:description"
       content="Ingeniero Informático apasionado por crear soluciones tecnológicas. Mira mis proyectos y contáctame."
     />
+
+    <!-- Tema: se aplica antes de pintar para evitar el parpadeo.
+        <html> siempre lleva una clase explícita: "dark" o "light". -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+          var isDark = saved ? saved === "dark" : prefersDark;
+          var root = document.documentElement;
+          root.classList.toggle("dark", isDark);
+          root.classList.toggle("light", !isDark);
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <body>
@@ -40,19 +57,4 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
-  <script>
-    (function () {
-      const savedTheme = localStorage.getItem("theme");
-      const systemPrefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      const isDark =
-        savedTheme === "dark" || (!savedTheme && systemPrefersDark);
-      if (isDark) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    })();
-  </script>
 </html>

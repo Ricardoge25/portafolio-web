@@ -20,17 +20,13 @@ export default function Header() {
   const handleToggle = () => setDarkMode(!darkMode);
   const handleMenuToggle = () => setMenuOpen(!menuOpen);
 
-  // Agrega o quita la clase 'dark' al body
+  // Mantiene <html> con una clase explícita: "dark" o "light"
   useEffect(() => {
     const root = document.documentElement;
 
-    if (darkMode) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
+    root.classList.toggle("dark", darkMode);
+    root.classList.toggle("light", !darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
   return (
