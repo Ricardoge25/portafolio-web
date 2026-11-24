@@ -48,7 +48,7 @@ export default function Projects() {
             image="/IntraNote.png"
             title="Intranote"
             description="Sistema de gestión de notas e incidencias para empresas y mesas de soporte, desarrollado con Django."
-            technologies={["Python", "Django", "HTML", "Bootrap", "JavaScript", "PostgreSQL"]}
+            technologies={["Python", "Django", "HTML", "Bootstrap", "JavaScript", "PostgreSQL"]}
             />
           </motion.div>
           
@@ -61,7 +61,7 @@ export default function Projects() {
             image="/PlantillaPortafolioDjango.webp"
             title="Plantilla Portafolio"
             description="Plantilla de portafolio completa para mostrar proyectos e información sobre ti, desarrollada con Django y Bootstrap."
-            technologies={["Python", "Django", "HTML", "Bootrap"]}
+            technologies={["Python", "Django", "HTML", "Bootstrap"]}
             />
           </motion.div>
           <motion.div 

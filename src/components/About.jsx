@@ -1,5 +1,4 @@
-import { motion, scale, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 
 const containerVariants = {
@@ -28,9 +27,6 @@ const Tag = (props) => {
 };
 
 function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "100px"});
-
   return (
     <section id="Sobre-Mí" className="pt-20 px-6 pb-[200px]">
       <motion.div
@@ -56,7 +52,7 @@ function About() {
           >
             <img
               src="/AvatarRG.webp"
-              alt="Avatar"
+              alt="Foto de Ricardo González"
               className="w-40 h-40 sm:w-52 sm:h-52 md:w-48 md:h-48 rounded-full object-cover"
             />
           </motion.div> 
