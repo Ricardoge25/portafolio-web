@@ -107,6 +107,7 @@ export default function Hero() {
           href="https://github.com/Ricardoge25"
           aria-label="GitHub"
           target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.2 }}
         >
           <FiGithub className="hover:text-primary transition" />
@@ -115,6 +116,7 @@ export default function Hero() {
           href="https://www.linkedin.com/in/ricardo-gonzalez-1538b6252/"
           aria-label="LinkedIn"
           target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.2 }}
         >
           <FaLinkedinIn className="hover:text-primary transition" />
