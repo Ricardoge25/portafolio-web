@@ -3,25 +3,48 @@ import { Link } from "react-scroll";
 import { site, scrollOffset } from "../data/site";
 import { heroQuestions } from "../data/heroQuestions";
 import StreamedAnswer from "./StreamedAnswer";
+import AsciiSphere from "./AsciiSphere";
+import { useMediaQuery } from "../hooks/useMediaQuery";
+
+// Halo del color de la página: despeja los textos cuando la esfera pasa por detrás
+const HALO =
+  "[text-shadow:0_0_12px_var(--theme-page),0_0_24px_var(--theme-page)]";
 
 export default function Hero() {
   const [activeId, setActiveId] = useState(heroQuestions[0].id);
+  // true mientras el "modelo" escribe; la esfera reacciona a esto
+  const [speaking, setSpeaking] = useState(false);
   const active = heroQuestions.find((item) => item.id === activeId);
+
+  // Desde 640 px: esfera grande a la derecha, que se desliza por detrás del chat
+  // al estrecharse la pantalla. Por debajo: esfera compacta centrada detrás del
+  // chat, más ancha que el panel para que se vea también por fuera.
+  const isCompact = !useMediaQuery("(min-width: 40rem)");
 
   return (
     <section id="Inicio" className="relative overflow-hidden pt-10 pb-section">
-      {/* La esfera ASCII animada se añade en un commit posterior */}
-
       <div className="wrapper relative flex flex-col gap-6 lg:gap-10">
-        <div className="flex max-w-[37.5rem] flex-col gap-6">
+        <AsciiSphere
+          size={isCompact ? "compact" : "large"}
+          speaking={speaking}
+          className={
+            isCompact
+              ? "bottom-8 left-1/2 -translate-x-1/2 opacity-80"
+              : "top-1/2 -right-56 -translate-y-1/2 opacity-90"
+          }
+        />
+
+        <div className="relative z-10 flex max-w-[37.5rem] flex-col gap-6">
           {/* NOMBRE Y ROL */}
-          <h1 className="font-mono text-display font-extrabold tracking-tighter">
+          <h1
+            className={`font-mono text-display font-extrabold tracking-tighter ${HALO}`}
+          >
             {site.name}
           </h1>
-          <p className="text-lead text-content-soft">{site.role}</p>
+          <p className={`text-lead text-content-soft ${HALO}`}>{site.role}</p>
 
-          {/* CHAT CON EL "MODELO" */}
-          <div className="overflow-hidden rounded-panel border border-line bg-surface/90">
+          {/* CHAT CON EL "MODELO": vidrio esmerilado, deja ver la esfera detrás */}
+          <div className="overflow-hidden rounded-panel border border-line bg-surface/75 backdrop-blur-sm">
             <div className="flex justify-between gap-4 border-b border-line px-4 py-3 font-mono text-meta text-content-muted">
               <span>modelo: {site.modelLabel}</span>
               <span>contexto: {site.contextLabel}</span>
@@ -31,7 +54,11 @@ export default function Hero() {
               <p className="self-end rounded-field bg-line px-4 py-2 text-small">
                 {active.question}
               </p>
-              <StreamedAnswer key={active.id} text={active.answer} />
+              <StreamedAnswer
+                key={active.id}
+                text={active.answer}
+                onStreamingChange={setSpeaking}
+              />
             </div>
 
             <div
@@ -62,7 +89,7 @@ export default function Hero() {
         </div>
 
         {/* ACCIONES (solo cuando la navegación es el menú móvil) */}
-        <div className="grid grid-cols-2 gap-3 sm:max-w-[37.5rem] lg:hidden">
+        <div className="relative z-10 grid grid-cols-2 gap-3 sm:max-w-[37.5rem] lg:hidden">
           <Link
             to="Proyectos"
             href="#Proyectos"
