@@ -28,18 +28,18 @@
 .light {
   color-scheme: light;
 
-  --theme-page: #F7F5FB;
+  --theme-page: #ECE8F5;
   --theme-surface: #FFFFFF;
-  --theme-raised: #EFEBF7;
-  --theme-line: #E2DDEE;
-  --theme-line-strong: #CFC7E2;
+  --theme-raised: #E0D9EF;
+  --theme-line: #BDB3D4;
+  --theme-line-strong: #7A7096;
   --theme-content: #17122A;
-  --theme-content-soft: #4A4263;
-  --theme-content-muted: #6B6385;
-  --theme-accent: #C2410C;
+  --theme-content-soft: #3F3858;
+  --theme-content-muted: #5A5275;
+  --theme-accent: #B03506;
   --theme-level-proficient: #7C3AED;
   --theme-on-gradient: #17122A;
-}
+}     
 
 /* ==========================================================================
   2. VALORES RESPONSIVE
