@@ -1,10 +1,10 @@
 // Datos generales del sitio.
 export const site = {
   name: "Ricardo González",
-  handle: "ricardo.gonzalez",
-  role: "Full Stack Developer construyendo el camino hacia AI Engineer. Python, Django y react en producción; IA en cada nuevo proyecto",
+  handle: "RAGE",
+  role: "Full Stack Developer construyendo el camino hacia AI Engineer. Python, Django y React en producción; implementando IA en cada nuevo proyecto.",
   modelLabel: "ricardo-gonzalez-v2",
-  cntextLabel: "3 años",
+  contextLabel: "3 años",
   cvHref: ""
 };
 
