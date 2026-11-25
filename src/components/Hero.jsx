@@ -6,7 +6,6 @@ import StreamedAnswer from "./StreamedAnswer";
 
 export default function Hero() {
   const [activeId, setActiveId] = useState(heroQuestions[0].id);
-  const [animate, setAnimate] = useState(false);
   const active = heroQuestions.find((item) => item.id === activeId);
 
   return (
@@ -32,11 +31,7 @@ export default function Hero() {
               <p className="self-end rounded-field bg-line px-4 py-2 text-small">
                 {active.question}
               </p>
-              <StreamedAnswer
-                key={active.id}
-                text={active.answer}
-                animate={animate}
-              />
+              <StreamedAnswer key={active.id} text={active.answer} />
             </div>
 
             <div
@@ -51,10 +46,7 @@ export default function Hero() {
                     key={item.id}
                     type="button"
                     aria-pressed={selected}
-                    onClick={() => {
-                      setActiveId(item.id);
-                      setAnimate(true);
-                    }}
+                    onClick={() => setActiveId(item.id)}
                     className={`min-h-11 shrink-0 cursor-pointer whitespace-nowrap rounded-full border px-4 text-small transition-colors duration-150 ease-out ${
                       selected
                         ? "border-transparent bg-linear-to-r from-gradient-start to-gradient-end font-semibold text-on-gradient"

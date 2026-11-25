@@ -1,7 +1,7 @@
 import { useStreamedText } from "../hooks/useStreamedText";
 
-export default function StreamedAnswer({ text, animate }) {
-  const { visibleText } = useStreamedText(text, animate);
+export default function StreamedAnswer({ text }) {
+  const { visibleText } = useStreamedText(text);
 
   return (
     <>
