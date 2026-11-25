@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link } from "react-scroll";
 import { site, scrollOffset } from "../data/site";
 import { heroQuestions } from "../data/heroQuestions";
+import StreamedAnswer from "./StreamedAnswer";
 
 export default function Hero() {
   const [activeId, setActiveId] = useState(heroQuestions[0].id);
+  const [animate, setAnimate] = useState(false);
   const active = heroQuestions.find((item) => item.id === activeId);
 
   return (
@@ -30,13 +32,11 @@ export default function Hero() {
               <p className="self-end rounded-field bg-line px-4 py-2 text-small">
                 {active.question}
               </p>
-              <p className="text-body text-content" aria-live="polite">
-                {active.answer}
-                <span
-                  aria-hidden="true"
-                  className="ml-0.5 inline-block h-4 w-2 bg-accent align-[-2px]"
-                />
-              </p>
+              <StreamedAnswer
+                key={active.id}
+                text={active.answer}
+                animate={animate}
+              />
             </div>
 
             <div
@@ -51,7 +51,10 @@ export default function Hero() {
                     key={item.id}
                     type="button"
                     aria-pressed={selected}
-                    onClick={() => setActiveId(item.id)}
+                    onClick={() => {
+                      setActiveId(item.id);
+                      setAnimate(true);
+                    }}
                     className={`min-h-11 shrink-0 cursor-pointer whitespace-nowrap rounded-full border px-4 text-small transition-colors duration-150 ease-out ${
                       selected
                         ? "border-transparent bg-linear-to-r from-gradient-start to-gradient-end font-semibold text-on-gradient"
