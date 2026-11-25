@@ -23,6 +23,10 @@
   --theme-accent: #FF8A5C;
   --theme-level-proficient: #C084FC;
   --theme-on-gradient: #0C0A16;
+  /* Esfera ASCII: en oscuro usa el degradado de marca */
+  --theme-sphere-start: #A855F7;
+  --theme-sphere-end: #FF6A3D;
+  --theme-sphere-opacity: 0.9;
 }
 
 .light {
@@ -39,6 +43,10 @@
   --theme-accent: #B03506;
   --theme-level-proficient: #7C3AED;
   --theme-on-gradient: #17122A;
+  /* Esfera ASCII: tonos más profundos para que se note sobre fondo claro */
+  --theme-sphere-start: #6D28D9;
+  --theme-sphere-end: #C2410C;
+  --theme-sphere-opacity: 1;
 }     
 
 /* ==========================================================================

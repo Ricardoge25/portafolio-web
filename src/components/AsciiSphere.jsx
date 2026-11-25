@@ -127,7 +127,8 @@ function LiveSphere({ size, speaking, className }) {
     <pre
       ref={ref}
       aria-hidden="true"
-      className={`pointer-events-none absolute bg-linear-135 from-gradient-start from-10% to-gradient-end to-80% bg-clip-text font-mono leading-[1.2] tracking-[1px] text-transparent select-none ${FONT_CLASS[size]} ${className}`}
+      className={`pointer-events-none absolute bg-linear-135 from-(--theme-sphere-start) from-10% 
+        to-(--theme-sphere-end) to-80% bg-clip-text font-mono leading-[1.2] tracking-[1px] text-transparent select-none ${FONT_CLASS[size]} ${className}`}
     >
       {reducedMotion ? stillFrame : frame}
     </pre>

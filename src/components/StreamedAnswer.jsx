@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import { useStreamedText } from "../hooks/useStreamedText";
 
-export default function StreamedAnswer({ text }) {
-  const { visibleText } = useStreamedText(text);
+// `onStreamingChange(true | false)` avisa cuándo empieza y termina de escribir
+export default function StreamedAnswer({ text, onStreamingChange }) {
+  const { visibleText, done } = useStreamedText(text);
+
+  useEffect(() => {
+    onStreamingChange?.(!done);
+  }, [done, onStreamingChange]);
 
   return (
     <>
@@ -11,8 +17,8 @@ export default function StreamedAnswer({ text }) {
         {text}
       </p>
 
-      {/* Visual: el texto completo: invisible, reserva el alto final para que 
-          el panel no crezca mientras se escribe; encima va el texto visible.*/}
+      {/* Visual: el texto completo, invisible, reserva el alto final para que
+          el panel no crezca mientras se escribe; encima va el texto visible. */}
       <p aria-hidden="true" className="relative text-body text-content">
         <span className="invisible">{text}</span>
         <span className="absolute inset-0">

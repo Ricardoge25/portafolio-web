@@ -29,8 +29,8 @@ export default function Hero() {
           speaking={speaking}
           className={
             isCompact
-              ? "bottom-8 left-1/2 -translate-x-1/2 opacity-80"
-              : "top-1/2 -right-56 -translate-y-1/2 opacity-90"
+              ? "bottom-8 left-1/2 -translate-x-1/2 opacity-(--theme-sphere-opacity)"
+              : "top-1/2 -right-56 -translate-y-1/2 opacity-(--theme-sphere-opacity)"
           }
         />
 
