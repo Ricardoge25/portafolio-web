@@ -4,7 +4,7 @@ export const heroQuestions = [
     id: "quien",
     question: "¿Quién soy?",
     answer:
-      "Soy Ricardo González, profesional en Ingeniería Informática y Full Stack Developer con 2 años de experiencia profesional en adelante. Trabajo principalmente con Python, Django y React. También cuento con conocimientos y aprendizaje de bases de datos relacionales como PostgreSQL, tecnologías como Docker y ambientes de desarrollo y producción separados. Me encuentro formándome de manera autónoma en Java, Angular, NodeJs, Express, así como en nube como AWS"
+      "Soy Ricardo González, profesional en Ingeniería Informática y Full Stack Developer con 2 años de experiencia profesional en adelante. Trabajo principalmente con Python, Django y React. También cuento con conocimientos y aprendizaje de bases de datos relacionales como PostgreSQL, tecnologías como Docker y ambientes de desarrollo y producción separados. Me encuentro formándome de manera autónoma en Java, Angular, NodeJs, Express, así como en nube como AWS."
   },
   {
     id: "construido",
