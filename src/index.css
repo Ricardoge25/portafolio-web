@@ -1,18 +1,162 @@
 @import "tailwindcss";
+
+/* Variante `dark:` TEMPORAL: los componentes viejos todavía la usan.
+   Se elimina en el último commit de la fase, junto con la paleta vieja. */
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme { 
+/* ==========================================================================
+  1. VALORES POR MODO
+  :root = modo oscuro (base). .light lo sobrescribe y debe ir DESPUÉS,
+  porque ambos selectores tienen la misma especificidad.
+   ========================================================================== */
+:root {
+  color-scheme: dark;
+
+  --theme-page: #0C0A16;
+  --theme-surface: #161226;
+  --theme-raised: #1E1933;
+  --theme-line: #2C2545;
+  --theme-line-strong: #3A3158;
+  --theme-content: #EEEAF7;
+  --theme-content-soft: #C9C2DC;
+  --theme-content-muted: #A59DBD;
+  --theme-accent: #FF8A5C;
+  --theme-level-proficient: #C084FC;
+  --theme-on-gradient: #0C0A16;
+}
+
+.light {
+  color-scheme: light;
+
+  --theme-page: #F7F5FB;
+  --theme-surface: #FFFFFF;
+  --theme-raised: #EFEBF7;
+  --theme-line: #E2DDEE;
+  --theme-line-strong: #CFC7E2;
+  --theme-content: #17122A;
+  --theme-content-soft: #4A4263;
+  --theme-content-muted: #6B6385;
+  --theme-accent: #C2410C;
+  --theme-level-proficient: #7C3AED;
+  --theme-on-gradient: #17122A;
+}
+
+/* ==========================================================================
+  2. VALORES RESPONSIVE
+  Base = móvil. Cada @media sube los valores. Los componentes no usan
+  prefijos (sm:, lg:) para esto: lo resuelve la variable.
+   ========================================================================== */
+:root {
+  --fs-display: 2.125rem; /* 34 */
+  --fs-section: 1.75rem; /* 28 */
+  --fs-feature: 1.5rem; /* 24 */
+  --fs-block: 1.125rem; /* 18 */
+  --fs-lead: 1.125rem; /* 18 */
+  --fs-body: 1rem; /* 16 */
+  --fs-small: 0.875rem; /* 14 */
+  --fs-meta: 0.75rem; /* 12 */
+
+  --space-section: 4rem; /* 64 */
+}
+
+/* Tipografía de escritorio desde 640 px (sm) */
+@media (min-width: 40rem) {
+  :root {
+    --fs-display: 3.125rem; /* 50 */
+    --fs-section: 2.4375rem; /* 39 */
+    --fs-feature: 1.9375rem; /* 31 */
+    --fs-block: 1.25rem; /* 20 */
+    --fs-lead: 1.25rem; /* 20 */
+    --fs-body: 1.0625rem; /* 17 */
+    --fs-small: 0.9375rem; /* 15 */
+    /* meta se queda en 12 */
+  }
+}
+
+/* Separación entre secciones de escritorio desde 1024 px (lg) */
+@media (min-width: 64rem) {
+  :root {
+    --space-section: 8rem; /* 128 */
+  }
+}
+
+/* ==========================================================================
+  3. TOKENS ESTÁTICOS (no cambian con el modo)
+   ========================================================================== */
+@theme {
+  /* Dos voces: mono = lo que "dice la máquina", sans = lo que dice la persona */
+  --font-mono: "Martian Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas,
+    monospace;
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+
+  /* Gradiente del modelo: igual en los dos modos */
+  --color-gradient-start: #A855F7;
+  --color-gradient-end: #FF6A3D;
+
+  /* Layout */
+  --container-content: 71rem; /* 1136 px → max-w-content */
+
+  /* Radios (los botones y chips usan rounded-full) */
+  --radius-field: 0.5rem; /* 8 */
+  --radius-panel: 0.875rem; /* 14 */
+}
+
+/* ==========================================================================
+  4. TOKENS QUE APUNTAN A VARIABLES (cambian con el modo o el ancho)
+  `inline`: la utilidad emite var(--theme-...) directamente.
+   ========================================================================== */
+@theme inline {
+  /* Color → bg-page, text-content, border-line, text-accent... */
+  --color-page: var(--theme-page);
+  --color-surface: var(--theme-surface);
+  --color-raised: var(--theme-raised);
+  --color-line: var(--theme-line);
+  --color-line-strong: var(--theme-line-strong);
+  --color-content: var(--theme-content);
+  --color-content-soft: var(--theme-content-soft);
+  --color-content-muted: var(--theme-content-muted);
+  --color-accent: var(--theme-accent);
+  --color-level-proficient: var(--theme-level-proficient);
+  --color-on-gradient: var(--theme-on-gradient);
+
+  /* Escala tipográfica → text-display, text-section... (tamaño + interlineado) */
+  --text-display: var(--fs-display);
+  --text-display--line-height: 1.1;
+  --text-section: var(--fs-section);
+  --text-section--line-height: 1.15;
+  --text-feature: var(--fs-feature);
+  --text-feature--line-height: 1.2;
+  --text-block: var(--fs-block);
+  --text-block--line-height: 1.3;
+  --text-lead: var(--fs-lead);
+  --text-lead--line-height: 1.55;
+  --text-body: var(--fs-body);
+  --text-body--line-height: 1.6;
+  --text-small: var(--fs-small);
+  --text-small--line-height: 1.5;
+  --text-meta: var(--fs-meta);
+  --text-meta--line-height: 1.4;
+
+  /* Separación entre secciones → py-section, mt-section, gap-section */
+  --spacing-section: var(--space-section);
+}
+
+/* ==========================================================================
+  LEGACY: paleta y fuentes viejas. Se eliminan en el último commit de la fase,
+  cuando ningún componente las use.
+   ========================================================================== */
+@theme {
   --color-shadow-1: #F2F2F2;
   --color-shadow-2: #D9D9D9;
   --color-shadow-3: #BFBFBF;
   --color-shadow-4: #A6A6A6;
   --color-shadow-5: #8C8C8C;
   --color-shadow-6: #737373;
-  --color-shadow-7: #595959; 
+  --color-shadow-7: #595959;
   --color-shadow-8: #404040;
   --color-shadow-9: #0D0D0D;
   --color-shadow-10: #000000;
-  
+
   --color-primary: #FF4D00;
   --color-secondary: #38193F;
   --color-dark-blue: #2C308C;
@@ -22,8 +166,6 @@
 
   --font-primary: 'Karma', sans-serif;
   --font-secondary: 'Lato', system-ui, sans-serif;
-
-  
 }
 
 body {

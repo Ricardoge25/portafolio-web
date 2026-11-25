@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Karma:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Karma:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Martian+Mono:wght@400;700;800&family=Instrument+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,6 +26,23 @@
       property="og:description"
       content="Ingeniero Informático apasionado por crear soluciones tecnológicas. Mira mis proyectos y contáctame."
     />
+
+    <!-- Tema: se aplica antes de pintar para evitar el parpadeo.
+        <html> siempre lleva una clase explícita: "dark" o "light". -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+          var isDark = saved ? saved === "dark" : prefersDark;
+          var root = document.documentElement;
+          root.classList.toggle("dark", isDark);
+          root.classList.toggle("light", !isDark);
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <body>
@@ -40,19 +57,4 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
-  <script>
-    (function () {
-      const savedTheme = localStorage.getItem("theme");
-      const systemPrefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      const isDark =
-        savedTheme === "dark" || (!savedTheme && systemPrefersDark);
-      if (isDark) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    })();
-  </script>
 </html>
