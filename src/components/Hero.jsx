@@ -7,8 +7,13 @@ import AsciiSphere from "./AsciiSphere";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 
 // Halo del color de la página: despeja los textos cuando la esfera pasa por detrás
+// (solo desde sm: en móvil la esfera va debajo, no detrás del texto)
 const HALO =
-  "[text-shadow:0_0_12px_var(--theme-page),0_0_24px_var(--theme-page)]";
+  "sm:[text-shadow:0_0_12px_var(--theme-page),0_0_24px_var(--theme-page)]";
+
+// Desvanece hacia abajo el borde donde se corta la media esfera (móvil)
+const FADE_DOWN =
+  "[-webkit-mask-image:linear-gradient(to_bottom,#000_65%,transparent)] [mask-image:linear-gradient(to_bottom,#000_45%,transparent)]";
 
 export default function Hero() {
   const [activeId, setActiveId] = useState(heroQuestions[0].id);
@@ -17,22 +22,20 @@ export default function Hero() {
   const active = heroQuestions.find((item) => item.id === activeId);
 
   // Desde 640 px: esfera grande a la derecha, que se desliza por detrás del chat
-  // al estrecharse la pantalla. Por debajo: esfera compacta centrada detrás del
-  // chat, más ancha que el panel para que se vea también por fuera.
+  // al estrecharse la pantalla. Por debajo: media esfera que asoma bajo los
+  // botones (no pasa por detrás de ningún texto).
   const isCompact = !useMediaQuery("(min-width: 40rem)");
 
   return (
     <section id="Inicio" className="relative overflow-hidden pt-10 pb-section">
       <div className="wrapper relative flex flex-col gap-6 lg:gap-10">
-        <AsciiSphere
-          size={isCompact ? "compact" : "large"}
-          speaking={speaking}
-          className={
-            isCompact
-              ? "bottom-8 left-1/2 -translate-x-1/2 opacity-(--theme-sphere-opacity)"
-              : "top-1/2 -right-56 -translate-y-1/2 opacity-(--theme-sphere-opacity)"
-          }
-        />
+        {!isCompact && (
+          <AsciiSphere
+            size="large"
+            speaking={speaking}
+            className="top-1/2 -right-56 -translate-y-1/2 opacity-(--theme-sphere-opacity)"
+          />
+        )}
 
         <div className="relative z-10 flex max-w-[37.5rem] flex-col gap-6">
           {/* NOMBRE Y ROL */}
@@ -43,8 +46,8 @@ export default function Hero() {
           </h1>
           <p className={`text-lead text-content-soft ${HALO}`}>{site.role}</p>
 
-          {/* CHAT CON EL "MODELO": vidrio esmerilado, deja ver la esfera detrás */}
-          <div className="overflow-hidden rounded-panel border border-line bg-surface/75 backdrop-blur-sm">
+          {/* CHAT CON EL "MODELO": desde sm es vidrio esmerilado y deja ver la esfera */}
+          <div className="overflow-hidden rounded-panel border border-line bg-surface sm:bg-surface/75 sm:backdrop-blur-sm">
             <div className="flex justify-between gap-4 border-b border-line px-4 py-3 font-mono text-meta text-content-muted">
               <span>modelo: {site.modelLabel}</span>
               <span>contexto: {site.contextLabel}</span>
@@ -107,6 +110,18 @@ export default function Hero() {
             Descargar CV
           </a>
         </div>
+
+        {/* HORIZONTE (solo móvil): la esfera tiene su centro en el borde inferior
+            de esta franja, así que solo se ve su mitad superior */}
+        {isCompact && (
+          <div className={`relative -mb-12 h-56 overflow-hidden ${FADE_DOWN}`}>
+            <AsciiSphere
+              size="compact"
+              speaking={speaking}
+              className="top-full left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-(--theme-sphere-opacity)"
+            />
+          </div>
+        )}
       </div>
     </section>
   );

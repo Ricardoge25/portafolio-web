@@ -12,7 +12,6 @@ const POINTER_MEMORY_MS = 3000;
 const MAX_GAZE = 1.1;
 
 const FONT_CLASS = { large: "text-[13px]", compact: "text-[16px]" };
-
 function LiveSphere({ size, speaking, className }) {
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
   // createSphere devuelve la función que dibuja un fotograma
