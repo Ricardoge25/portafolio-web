@@ -23,23 +23,31 @@
   --theme-accent: #FF8A5C;
   --theme-level-proficient: #C084FC;
   --theme-on-gradient: #0C0A16;
+  /* Esfera ASCII: en oscuro usa el degradado de marca */
+  --theme-sphere-start: #A855F7;
+  --theme-sphere-end: #FF6A3D;
+  --theme-sphere-opacity: 0.9;
 }
 
 .light {
   color-scheme: light;
 
-  --theme-page: #F7F5FB;
+  --theme-page: #ECE8F5;
   --theme-surface: #FFFFFF;
-  --theme-raised: #EFEBF7;
-  --theme-line: #E2DDEE;
-  --theme-line-strong: #CFC7E2;
+  --theme-raised: #E0D9EF;
+  --theme-line: #BDB3D4;
+  --theme-line-strong: #7A7096;
   --theme-content: #17122A;
-  --theme-content-soft: #4A4263;
-  --theme-content-muted: #6B6385;
-  --theme-accent: #C2410C;
+  --theme-content-soft: #3F3858;
+  --theme-content-muted: #5A5275;
+  --theme-accent: #B03506;
   --theme-level-proficient: #7C3AED;
   --theme-on-gradient: #17122A;
-}
+  /* Esfera ASCII: tonos más profundos para que se note sobre fondo claro */
+  --theme-sphere-start: #6D28D9;
+  --theme-sphere-end: #C2410C;
+  --theme-sphere-opacity: 1;
+}     
 
 /* ==========================================================================
   2. VALORES RESPONSIVE
@@ -142,6 +150,29 @@
 }
 
 /* ==========================================================================
+  5. BASE GLOBAL Y UTILIDADES PROPIAS
+   ========================================================================== */
+@layer base {
+  body {
+    @apply bg-page font-sans text-body text-content;
+  }
+
+  /* Anillo de foco: 2 px en el color de acento, separado 2 px del elemento.
+    Usa la variable --theme-accent (no --color-accent): las variables de
+     `@theme inline` no se emiten como variables CSS. */
+  :focus-visible {
+    outline: 2px solid var(--theme-accent);
+    outline-offset: 2px;
+  }
+}
+
+/* Contenedor de página: máx. 1136 px, centrado, con margen lateral
+   de 20 px en móvil y 40 px desde sm. Uso: className="wrapper" */
+@utility wrapper {
+  @apply mx-auto w-full max-w-content px-5 sm:px-10;
+}
+
+/* ==========================================================================
   LEGACY: paleta y fuentes viejas. Se eliminan en el último commit de la fase,
   cuando ningún componente las use.
    ========================================================================== */
@@ -168,6 +199,3 @@
   --font-secondary: 'Lato', system-ui, sans-serif;
 }
 
-body {
-  @apply bg-shadow-1 text-black dark:bg-shadow-9 dark:text-shadow-1;
-}
